@@ -1,0 +1,54 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <fragment
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        class="com.google.android.gms.maps.SupportMapFragment" />
+    <Button
+                    android:id="@+id/bouton_afficherBoiteCalcul"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:onClick="onClick"
+                    android:visibility="invisible"
+                    android:text="@string/afficher_boite_calcul" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:baselineAligned="false" >
+
+        <!--Ce linearlayout contiendra le fragment de la boite de calcul  -->          
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+            
+            <FrameLayout 
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                >
+                <fragment 
+                    android:name="com.android.taxifare.FareCalculatorFragment"
+                    android:id="@+id/boite_calcul"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </FrameLayout>
+        </LinearLayout>
+		<!-- Ce linearlayout sera vide, il ne sert qu'a determiner la taille du layout 
+			precedent (2/3 de la longueur de l'écran) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical" >
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

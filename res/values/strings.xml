@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Taxi Fare</string>
+    <string name="afficher_boite_calcul">Afficher boite</string>
+    <string name="afficher_carte">Afficher carte</string>
+    <string name="calcul_Box">Boite de calcul</string>
+    <string name="date_par_defaut">Date</string>
+    <string name="distance">Distance:</string>
+    <string name="distance_par_defaut">0</string>
+    <string name="duree">Duree:</string>
+    <string name="duree_par_defaut">0</string>
+    <string name="estimation">Estimation:</string>
+    <string name="estimation_par_defaut">0$</string>
+    <string name="evaluer">Calculer</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="heure_par_defaut">Heure</string>
+    <string name="menu_settings">Settings</string>
+    <string name="point_arrivee">Destination</string>
+    <string name="point_depart">Origine</string>
+    <string name="titre_boite_calcul">Taxi Fare Calculator</string>
+
+</resources>

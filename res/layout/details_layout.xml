@@ -1,0 +1,187 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/mainLayout"
+	android:descendantFocusability="beforeDescendants"
+	android:focusableInTouchMode="true"
+    android:background="@drawable/background_with_shadow"
+    tools:context=".MainActivity" >
+
+    <AutoCompleteTextView
+        android:id="@+id/arrivee"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/depart"
+        android:layout_below="@+id/depart"
+        android:layout_marginTop="42dp"
+        android:ems="10"
+        android:hint="@string/point_arrivee"
+        android:maxLines="1"
+        android:scrollHorizontally="true"
+        android:singleLine="true" />
+
+    <AutoCompleteTextView
+        android:id="@+id/depart"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="92dp"
+        android:ellipsize="none"
+        android:ems="10"
+        android:hint="@string/point_depart"
+        android:scrollHorizontally="true"
+        android:singleLine="true" />
+
+    <Button
+        android:id="@+id/heure_bouton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/date_bouton"
+        android:layout_marginLeft="20dp"
+        android:onClick="onClick"
+        android:layout_toRightOf="@+id/date_bouton"
+        android:text="@string/heure_par_defaut" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:text="@string/titre_boite_calcul"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/date_bouton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/arrivee"
+        android:layout_below="@+id/arrivee"
+        android:layout_marginTop="17dp"
+        android:onClick="onClick"
+        android:text="@string/date_par_defaut" />
+
+    <Button
+        android:id="@+id/button_eval"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/arrivee"
+        android:layout_below="@+id/heure_bouton"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/yellow_button"
+        android:onClick="onClick"
+        android:text="@string/evaluer"
+        android:textColor="@android:color/white" />
+
+    <View
+        android:id="@+id/separator1"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView1"
+        android:layout_margin="15dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/darker_gray" />
+
+    <View
+        android:id="@+id/separator2"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_alignLeft="@+id/separator1"
+        android:layout_alignRight="@+id/separator1"
+        android:layout_below="@+id/button_eval"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@android:color/darker_gray" />
+
+    <TextView
+        android:id="@+id/text_estimation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/arrivee"
+        android:layout_below="@+id/separator2"
+        android:layout_marginBottom="10dp"
+        android:text="@string/estimation"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/text_distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/text_estimation"
+        android:layout_below="@+id/text_duree"
+        android:layout_marginBottom="10dp"
+        android:text="@string/distance"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/text_valeur_duree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/text_duree"
+        android:layout_alignBottom="@+id/text_duree"
+        android:layout_toRightOf="@+id/text_duree"
+        android:text="@string/duree_par_defaut"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/text_valeur_estimation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/text_estimation"
+        android:layout_alignBottom="@+id/text_estimation"
+        android:layout_alignLeft="@+id/text_valeur_duree"
+        android:text="@string/estimation_par_defaut"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#00A01D" />
+
+    <TextView
+        android:id="@+id/text_valeur_distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/text_valeur_duree"
+        android:layout_alignBaseline="@+id/text_distance"
+        android:layout_alignBottom="@+id/text_distance"
+        android:layout_marginBottom="10dp"
+        android:text="@string/distance_par_defaut"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/text_duree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_estimation"
+        android:layout_alignLeft="@+id/text_estimation"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="50dp"
+        android:text="@string/duree"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <View
+        android:id="@+id/View01"
+        android:visibility="invisible"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/text_distance"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/darker_gray" />
+
+    <Button
+        android:id="@+id/afficherCarte"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:background="@drawable/yellow_button"
+        android:layout_marginRight="10dp"
+        android:onClick="onClick"
+        android:visibility="invisible"
+        android:layout_alignBaseline="@+id/button_eval"
+        android:layout_alignBottom="@+id/button_eval"
+        android:layout_toLeftOf="@+id/button_eval"
+        android:text="Afficher carte" />
+
+</RelativeLayout>
