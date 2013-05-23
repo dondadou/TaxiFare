@@ -3,9 +3,11 @@ package com.android.taxifare;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -23,30 +25,43 @@ import com.google.android.gms.maps.model.PolylineOptions;
 /**
  * 
  * @author Daniel Olivier
- *
+ * 
  */
 public class MainActivity extends FragmentActivity implements
 		onDisplayDirectionsListener {
-	
-	//TODO: Faire un meilleur algo pour le calcul des estimation (prendre en compte le traffic)
-	//TODO: La position de l'utilisateur doit etre le point d'origine par defaut.
-	//TODO: Ameliorer l'interface(?).
+
+	// TODO: Faire un meilleur algo pour le calcul des estimation (prendre en
+	// compte le traffic)
+	// TODO: La position de l'utilisateur doit etre le point d'origine par
+	// defaut.
+	// TODO: Ameliorer l'interface(?).
 	private GoogleMap mMap;
 	private Localisateur mLocalisateur;
 	private FareCalculatorFragment mFareCalculatorFragment;
 	private Directions mDirection;
+	private boolean isTablet;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-		mLocalisateur = new Localisateur(this);
-		setFragments();
-		Location myLocation = mLocalisateur.obtenirPosition();
+		isTablet = false;
 
-		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
-				new LatLng(myLocation.getLatitude(), myLocation.getLongitude()),
-				14.0f));
+		// comme specifié dans le fichier refs.xml, activity_main appelle des
+		// layout différents
+		// dépendant du type de support (télephone ou tablette)
+		setContentView(R.layout.activity_main);
+		setFareCalculatorFragment();
+
+		// Vérifie si le support est une tablette ou non
+		if (findViewById(R.id.map) != null) {
+			mLocalisateur = new Localisateur(this);
+			isTablet = true;
+			setUpMapIfNeeded();
+			Location myLocation = mLocalisateur.obtenirPosition();
+
+			mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
+					myLocation.getLatitude(), myLocation.getLongitude()), 14.0f));
+		}
 	}
 
 	@Override
@@ -64,17 +79,24 @@ public class MainActivity extends FragmentActivity implements
 	 * 
 	 */
 	public void onClick(View v) {
-		switch(v.getId()){
+		switch (v.getId()) {
 		case R.id.bouton_afficherBoiteCalcul:
-			FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-			ft.show(mFareCalculatorFragment);
-			ft.addToBackStack(null);
-			ft.commit();
-			setDisplayBoxButtonVisible(false);
+			displayFareCalculatorFragment();
 			break;
 		default:
 			mFareCalculatorFragment.onClick(v);
 		}
+	}
+
+	/*
+	 * Affiche le fragment contenant la boite de calcul des estimations.
+	 */
+	private void displayFareCalculatorFragment() {
+		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+		ft.show(mFareCalculatorFragment);
+		ft.addToBackStack(null);
+		ft.commit();
+		setDisplayBoxButtonVisible(false);
 	}
 
 	/*
@@ -106,16 +128,16 @@ public class MainActivity extends FragmentActivity implements
 	/**
 	 * 
 	 */
-	private void setFragments() {
-		setUpMapIfNeeded();
+	private void setFareCalculatorFragment() {
 		FragmentManager fm = getSupportFragmentManager();
 		mFareCalculatorFragment = (FareCalculatorFragment) fm
 				.findFragmentById(R.id.boite_calcul);
 	}
 
 	/**
-	 * Fonction permettant de faire le decodage des points
-	 * retournés par Google Direction.
+	 * Fonction permettant de faire le decodage des points retournés par Google
+	 * Direction.
+	 * 
 	 * @param encoded
 	 * @return
 	 */
@@ -155,47 +177,51 @@ public class MainActivity extends FragmentActivity implements
 	public void displayDirection(Directions direction) {
 		// TODO Auto-generated method stub
 		mDirection = direction;
-		mMap.clear();
+		PolylineOptions rectLine = new PolylineOptions().width(5).color(
+				Color.argb(116, 61, 50, 255));
 
 		if (mDirection != null && mDirection.getStatus().equals("OK")) {
-			
-			String encoded = mDirection.getRoute().get(0).getPolyline().getPoints();
-			
+
+			String encoded = mDirection.getRoute().get(0).getPolyline()
+					.getPoints();
+
 			List<LatLng> poly = decodePoly(encoded);
-			
-			PolylineOptions rectLine = new PolylineOptions().width(5).color(Color.argb(116, 61, 50, 255));
 
-			for(int i = 0 ; i < poly.size() ; i++) {          
-			rectLine.add(poly.get(i));
+			for (int i = 0; i < poly.size(); i++) {
+				rectLine.add(poly.get(i));
 			}
+			
+			if (isTablet) {
+				mMap.clear();
+				mMap.addPolyline(rectLine);
 
-			mMap.addPolyline(rectLine);
-		}
-		
-		// Cache le FareCalculatorFragment	
-		if(mFareCalculatorFragment.isVisible()){
-			FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-			ft.hide(mFareCalculatorFragment);
-			ft.addToBackStack(null);
-			ft.commit();
-			setDisplayBoxButtonVisible(true);
-		}
-		
-		
-		
-
+				// Cache le FareCalculatorFragment
+				FragmentTransaction ft = getSupportFragmentManager()
+						.beginTransaction();
+				ft.hide(mFareCalculatorFragment);
+				ft.addToBackStack(null);
+				ft.commit();
+				setDisplayBoxButtonVisible(true);
+			} else {
+				// Appeler mapActivity
+				//Bundle args = new Bundle();
+				//args.putParcelableArrayList("polyline", (ArrayList<? extends Parcelable>) poly);
+				Intent i = new Intent(getApplicationContext(),MapActivity.class);
+				//i.putExtras(args);
+				startActivity(i);
+			}
+		}		
 	}
-	
+
 	/**
 	 * 
 	 * @param isVisible
 	 */
-	private void setDisplayBoxButtonVisible(boolean isVisible){
-		Button afficherBoite = (Button)findViewById(R.id.bouton_afficherBoiteCalcul);
-		if(isVisible){
+	private void setDisplayBoxButtonVisible(boolean isVisible) {
+		Button afficherBoite = (Button) findViewById(R.id.bouton_afficherBoiteCalcul);
+		if (isVisible) {
 			afficherBoite.setVisibility(View.VISIBLE);
-		}
-		else{
+		} else {
 			afficherBoite.setVisibility(View.INVISIBLE);
 		}
 	}

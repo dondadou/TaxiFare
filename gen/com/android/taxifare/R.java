@@ -163,17 +163,19 @@ containing a value of this type.
         public static final int text_valeur_estimation=0x7f040015;
     }
     public static final class layout {
-        public static final int activity_main=0x7f030000;
-        public static final int details_layout=0x7f030001;
-        public static final int list_item=0x7f030002;
-        public static final int map_fragment_layout=0x7f030003;
+        public static final int activity_main=0x7f030005;
+        public static final int activity_main_tablet=0x7f030000;
+        public static final int fare_calculator_fragment=0x7f030001;
+        public static final int fare_calculator_fragment_container=0x7f030002;
+        public static final int list_item=0x7f030003;
+        public static final int map_fragment=0x7f030004;
     }
     public static final class menu {
         public static final int activity_main=0x7f070000;
     }
     public static final class string {
-        public static final int afficher_boite_calcul=0x7f050018;
-        public static final int afficher_carte=0x7f050022;
+        public static final int afficher_boite_calcul=0x7f050012;
+        public static final int afficher_carte=0x7f050013;
         public static final int app_name=0x7f050011;
         /**   Title for notification shown when GooglePlayServices is unavailable [CHAR LIMIT=70] 
          */
@@ -184,7 +186,7 @@ containing a value of this type.
         /**   Requested by string saying which app requested the notification. [CHAR LIMIT=42] 
          */
         public static final int auth_client_requested_by_msg=0x7f050010;
-        public static final int calcul_Box=0x7f050017;
+        public static final int calcul_Box=0x7f050014;
         /**  Button in confirmation dialog to enable Google Play services.  Clicking it
         will direct user to application settings of Google Play services where they
         can enable it [CHAR LIMIT=40] 
@@ -238,20 +240,20 @@ containing a value of this type.
         find the service-side assets. [CHAR LIMIT=25] 
          */
         public static final int common_signin_button_text_long=0x7f05000d;
-        public static final int date_par_defaut=0x7f05001b;
-        public static final int distance=0x7f05001d;
-        public static final int distance_par_defaut=0x7f050020;
-        public static final int duree=0x7f050021;
-        public static final int duree_par_defaut=0x7f05001e;
-        public static final int estimation=0x7f050019;
-        public static final int estimation_par_defaut=0x7f05001f;
-        public static final int evaluer=0x7f050014;
-        public static final int hello_world=0x7f050012;
-        public static final int heure_par_defaut=0x7f05001a;
-        public static final int menu_settings=0x7f050013;
-        public static final int point_arrivee=0x7f050016;
-        public static final int point_depart=0x7f050015;
-        public static final int titre_boite_calcul=0x7f05001c;
+        public static final int date_par_defaut=0x7f050015;
+        public static final int distance=0x7f050016;
+        public static final int distance_par_defaut=0x7f050017;
+        public static final int duree=0x7f050018;
+        public static final int duree_par_defaut=0x7f050019;
+        public static final int estimation=0x7f05001a;
+        public static final int estimation_par_defaut=0x7f05001b;
+        public static final int evaluer=0x7f05001c;
+        public static final int hello_world=0x7f05001d;
+        public static final int heure_par_defaut=0x7f05001e;
+        public static final int menu_settings=0x7f05001f;
+        public static final int point_arrivee=0x7f050020;
+        public static final int point_depart=0x7f050021;
+        public static final int titre_boite_calcul=0x7f050022;
     }
     public static final class style {
         /** 
