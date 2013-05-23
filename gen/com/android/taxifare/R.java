@@ -250,10 +250,11 @@ containing a value of this type.
         public static final int evaluer=0x7f05001c;
         public static final int hello_world=0x7f05001d;
         public static final int heure_par_defaut=0x7f05001e;
-        public static final int menu_settings=0x7f05001f;
-        public static final int point_arrivee=0x7f050020;
-        public static final int point_depart=0x7f050021;
-        public static final int titre_boite_calcul=0x7f050022;
+        public static final int map_label=0x7f05001f;
+        public static final int menu_settings=0x7f050020;
+        public static final int point_arrivee=0x7f050021;
+        public static final int point_depart=0x7f050022;
+        public static final int titre_boite_calcul=0x7f050023;
     }
     public static final class style {
         /** 

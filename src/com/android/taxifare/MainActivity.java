@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -204,10 +203,10 @@ public class MainActivity extends FragmentActivity implements
 				setDisplayBoxButtonVisible(true);
 			} else {
 				// Appeler mapActivity
-				//Bundle args = new Bundle();
-				//args.putParcelableArrayList("polyline", (ArrayList<? extends Parcelable>) poly);
-				Intent i = new Intent(getApplicationContext(),MapActivity.class);
-				//i.putExtras(args);
+				Bundle args = new Bundle();
+				args.putParcelable("rectline", rectLine);
+				Intent i = new Intent(getApplicationContext(), MapActivity.class);
+				i.putExtra("bundle", args);
 				startActivity(i);
 			}
 		}		
