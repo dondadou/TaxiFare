@@ -13,12 +13,15 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 
 import com.android.taxifare.FareCalculatorFragment.onDisplayDirectionsListener;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 /**
@@ -28,12 +31,6 @@ import com.google.android.gms.maps.model.PolylineOptions;
  */
 public class MainActivity extends FragmentActivity implements
 		onDisplayDirectionsListener {
-
-	// TODO: Faire un meilleur algo pour le calcul des estimation (prendre en
-	// compte le traffic)
-	// TODO: La position de l'utilisateur doit etre le point d'origine par
-	// defaut.
-	// TODO: Ameliorer l'interface(?).
 	private GoogleMap mMap;
 	private Localisateur mLocalisateur;
 	private FareCalculatorFragment mFareCalculatorFragment;
@@ -183,6 +180,11 @@ public class MainActivity extends FragmentActivity implements
 
 			String encoded = mDirection.getRoute().get(0).getPolyline()
 					.getPoints();
+			// TODO: Trouver une meilleure facon...
+			LatLng origin =new LatLng(mDirection.getRoute().get(0).getLegs().get(0).getStartLocation().lat,
+					mDirection.getRoute().get(0).getLegs().get(0).getStartLocation().lng);
+			LatLng destination =new LatLng(mDirection.getRoute().get(0).getLegs().get(0).getEndLocation().lat,
+					mDirection.getRoute().get(0).getLegs().get(0).getEndLocation().lng);
 
 			List<LatLng> poly = decodePoly(encoded);
 
@@ -193,6 +195,15 @@ public class MainActivity extends FragmentActivity implements
 			if (isTablet) {
 				mMap.clear();
 				mMap.addPolyline(rectLine);
+				mMap.addMarker(new MarkerOptions()
+                .position(origin)
+                .title("Origine")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+				
+				mMap.addMarker(new MarkerOptions()
+                .position(destination)
+                .title("Destination")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
 
 				// Cache le FareCalculatorFragment
 				FragmentTransaction ft = getSupportFragmentManager()
@@ -201,10 +212,11 @@ public class MainActivity extends FragmentActivity implements
 				ft.addToBackStack(null);
 				ft.commit();
 				setDisplayBoxButtonVisible(true);
-			} else {
-				// Appeler mapActivity
+			} else {				
 				Bundle args = new Bundle();
 				args.putParcelable("rectline", rectLine);
+				args.putParcelable("origin", origin);
+				args.putParcelable("destination", destination);
 				Intent i = new Intent(getApplicationContext(), MapActivity.class);
 				i.putExtra("bundle", args);
 				startActivity(i);
@@ -217,11 +229,15 @@ public class MainActivity extends FragmentActivity implements
 	 * @param isVisible
 	 */
 	private void setDisplayBoxButtonVisible(boolean isVisible) {
-		Button afficherBoite = (Button) findViewById(R.id.bouton_afficherBoiteCalcul);
+		Button displayBox = (Button) findViewById(R.id.bouton_afficherBoiteCalcul);
+		FrameLayout frameBox = (FrameLayout) findViewById(R.id.cadre_boite_calcul); 
 		if (isVisible) {
-			afficherBoite.setVisibility(View.VISIBLE);
+			displayBox.setVisibility(View.VISIBLE);
+			frameBox.setVisibility(View.INVISIBLE);
+			
 		} else {
-			afficherBoite.setVisibility(View.INVISIBLE);
+			displayBox.setVisibility(View.INVISIBLE);
+			frameBox.setVisibility(View.VISIBLE);
 		}
 	}
 }

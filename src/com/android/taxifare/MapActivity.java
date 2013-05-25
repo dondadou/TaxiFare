@@ -15,6 +15,8 @@ public class MapActivity extends FragmentActivity{
 	private GoogleMap mMap;
 	private Localisateur mLocalisateur;
 	private PolylineOptions mPolyline;
+	private LatLng mOrigin;
+	private LatLng mDestination;
  	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +24,8 @@ public class MapActivity extends FragmentActivity{
 		super.onCreate(savedInstanceState);
 		Bundle bundle = getIntent().getParcelableExtra("bundle");
 		mPolyline = bundle.getParcelable("rectline");
-		
+		mOrigin = bundle.getParcelable("origin");
+		mDestination = bundle.getParcelable("destination");
 		
 		mLocalisateur = new Localisateur(this);
 		setContentView(R.layout.map_fragment);

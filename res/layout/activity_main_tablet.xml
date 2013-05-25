@@ -11,8 +11,10 @@
                     android:id="@+id/bouton_afficherBoiteCalcul"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
                     android:layout_margin="5dp"
                     android:onClick="onClick"
+                    android:background="@drawable/yellow_button"
                     android:visibility="invisible"
                     android:text="@string/afficher_boite_calcul" />
 
@@ -31,7 +33,9 @@
             
             <FrameLayout 
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:id="@+id/cadre_boite_calcul"
+                android:layout_height="wrap_content"
+                android:background="@drawable/grey_frame"
                 android:layout_margin="15dp"
                 >
                 <fragment 

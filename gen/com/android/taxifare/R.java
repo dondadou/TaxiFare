@@ -130,37 +130,39 @@ containing a value of this type.
     }
     public static final class drawable {
         public static final int background_with_shadow=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
-        public static final int yellow_button=0x7f020002;
+        public static final int grey_frame=0x7f020001;
+        public static final int ic_launcher=0x7f020002;
+        public static final int yellow_button=0x7f020003;
     }
     public static final class id {
-        public static final int View01=0x7f040017;
-        public static final int afficherCarte=0x7f040018;
-        public static final int afficher_boite_button=0x7f040019;
-        public static final int arrivee=0x7f040009;
-        public static final int boite_calcul=0x7f040007;
+        public static final int View01=0x7f040018;
+        public static final int afficherCarte=0x7f040019;
+        public static final int afficher_boite_button=0x7f04001a;
+        public static final int arrivee=0x7f04000a;
+        public static final int boite_calcul=0x7f040008;
         public static final int bouton_afficherBoiteCalcul=0x7f040006;
-        public static final int button_eval=0x7f04000e;
-        public static final int date_bouton=0x7f04000c;
-        public static final int depart=0x7f04000a;
-        public static final int heure_bouton=0x7f04000b;
+        public static final int button_eval=0x7f04000f;
+        public static final int cadre_boite_calcul=0x7f040007;
+        public static final int date_bouton=0x7f04000d;
+        public static final int depart=0x7f04000b;
+        public static final int heure_bouton=0x7f04000c;
         public static final int hybrid=0x7f040004;
-        public static final int mainLayout=0x7f040008;
+        public static final int mainLayout=0x7f040009;
         public static final int map=0x7f040005;
-        public static final int menu_settings=0x7f04001a;
+        public static final int menu_settings=0x7f04001b;
         public static final int none=0x7f040000;
         public static final int normal=0x7f040001;
         public static final int satellite=0x7f040002;
-        public static final int separator1=0x7f04000f;
-        public static final int separator2=0x7f040010;
+        public static final int separator1=0x7f040010;
+        public static final int separator2=0x7f040011;
         public static final int terrain=0x7f040003;
-        public static final int textView1=0x7f04000d;
-        public static final int text_distance=0x7f040012;
-        public static final int text_duree=0x7f040013;
-        public static final int text_estimation=0x7f040011;
-        public static final int text_valeur_distance=0x7f040016;
-        public static final int text_valeur_duree=0x7f040014;
-        public static final int text_valeur_estimation=0x7f040015;
+        public static final int textView1=0x7f04000e;
+        public static final int text_distance=0x7f040013;
+        public static final int text_duree=0x7f040014;
+        public static final int text_estimation=0x7f040012;
+        public static final int text_valeur_distance=0x7f040017;
+        public static final int text_valeur_duree=0x7f040015;
+        public static final int text_valeur_estimation=0x7f040016;
     }
     public static final class layout {
         public static final int activity_main=0x7f030005;

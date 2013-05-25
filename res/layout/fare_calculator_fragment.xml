@@ -5,7 +5,7 @@
     android:id="@+id/mainLayout"
 	android:descendantFocusability="beforeDescendants"
 	android:focusableInTouchMode="true"
-    android:background="@drawable/background_with_shadow"
+    android:background="@android:color/white"
     tools:context=".MainActivity" >
 
     <AutoCompleteTextView
@@ -15,7 +15,10 @@
         android:layout_alignLeft="@+id/depart"
         android:layout_below="@+id/depart"
         android:layout_marginTop="42dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:ems="10"
+        android:imeOptions="actionDone"
         android:hint="@string/point_arrivee"
         android:maxLines="1"
         android:scrollHorizontally="true"
@@ -28,8 +31,11 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="92dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:ellipsize="none"
         android:ems="10"
+        android:imeOptions="actionNext"
         android:hint="@string/point_depart"
         android:scrollHorizontally="true"
         android:singleLine="true" />
