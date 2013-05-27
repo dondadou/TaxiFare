@@ -1,4 +1,4 @@
-package com.android.taxifare;
+package com.android.taxifare.google.apis;
 
 import java.io.Serializable;
 import java.util.List;

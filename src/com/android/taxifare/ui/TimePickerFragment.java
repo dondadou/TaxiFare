@@ -1,4 +1,4 @@
-package com.android.taxifare;
+package com.android.taxifare.ui;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -10,6 +10,8 @@ import android.support.v4.app.DialogFragment;
 import android.text.format.DateFormat;
 import android.widget.TextView;
 import android.widget.TimePicker;
+
+import com.android.taxifare.R;
 
 public class TimePickerFragment extends DialogFragment implements
 TimePickerDialog.OnTimeSetListener {

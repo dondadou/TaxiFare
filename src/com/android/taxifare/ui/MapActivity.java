@@ -1,10 +1,12 @@
-package com.android.taxifare;
+package com.android.taxifare.ui;
 
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 
+import com.android.taxifare.Localisateur;
+import com.android.taxifare.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;

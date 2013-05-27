@@ -1,4 +1,4 @@
-package com.android.taxifare;
+package com.android.taxifare.ui;
 
 import java.text.DecimalFormat;
 import java.util.Calendar;
@@ -23,6 +23,11 @@ import android.widget.Button;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
+
+import com.android.taxifare.R;
+import com.android.taxifare.google.apis.Directions;
+import com.android.taxifare.google.apis.GoogleServicesFunction;
+import com.android.taxifare.google.apis.PlacesAutoCompleteList;
 
 public class FareCalculatorFragment extends Fragment {
 	private View mView;

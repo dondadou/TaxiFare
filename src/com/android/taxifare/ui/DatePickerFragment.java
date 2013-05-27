@@ -1,4 +1,4 @@
-package com.android.taxifare;
+package com.android.taxifare.ui;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.widget.DatePicker;
 import android.widget.TextView;
+
+import com.android.taxifare.R;
 
 public class DatePickerFragment extends DialogFragment implements
 DatePickerDialog.OnDateSetListener {

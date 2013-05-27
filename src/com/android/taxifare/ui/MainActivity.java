@@ -1,4 +1,4 @@
-package com.android.taxifare;
+package com.android.taxifare.ui;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
-import com.android.taxifare.FareCalculatorFragment.onDisplayDirectionsListener;
+import com.android.taxifare.Localisateur;
+import com.android.taxifare.R;
+import com.android.taxifare.google.apis.Directions;
+import com.android.taxifare.ui.FareCalculatorFragment.onDisplayDirectionsListener;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
