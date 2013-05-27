@@ -3,7 +3,7 @@
 
     <string name="app_name">Taxi Fare</string>
     <string name="afficher_boite_calcul">Afficher boite</string>
-    <string name="afficher_carte">Afficher carte</string>
+    <string name="afficher_carte">Afficher le trajet</string>
     <string name="calcul_Box">Boite de calcul</string>
     <string name="date_par_defaut">Date</string>
     <string name="distance">Distance:</string>

@@ -4,6 +4,7 @@ import java.text.DecimalFormat;
 import java.util.Calendar;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -13,7 +14,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -65,6 +68,16 @@ public class FareCalculatorFragment extends Fragment {
 				return true;
 			}
 		});
+		
+		
+		mView.setOnTouchListener(new OnTouchListener() {
+
+            public boolean onTouch(View v, MotionEvent event) {
+                hideKeyboard();
+                return false;
+            }
+
+        });
 
 		return mView;
 	}
@@ -95,6 +108,7 @@ public void setCurrentTimeAndDate() {
  * Gestion des evenement relié au clics des btons.
  */
 	public boolean onClick(View v) {
+		hideKeyboard();
 		switch (v.getId()) {
 		case R.id.date_bouton:
 			showDatePickerDialog(v);
@@ -277,13 +291,42 @@ public void showTimePickerDialog(View v) {
 			return filter;
 		}
 	}
+	
+	/**
+	 * Permet de cacher le clavier
+	 */
+	private void hideKeyboard(){
 
+		if(getActivity().getCurrentFocus()!=null && getActivity().getCurrentFocus() instanceof AutoCompleteTextView){
+			 InputMethodManager inputMethodManager = (InputMethodManager)  getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
+			    inputMethodManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
+	    }
+	}
+
+	
 	/**
 	 * 
 	 * 
 	 * */
 	private class LoadingResult extends AsyncTask<String, Void, Void> {
 
+		private ProgressDialog dialog = new ProgressDialog(getActivity());
+    	
+		/**
+		 * (non-Javadoc)
+		 * @see android.os.AsyncTask#onPreExecute()
+		 */
+		@Override
+    	protected void onPreExecute() 
+    	{
+    		this.dialog.setMessage("Recherche en cours...");
+            this.dialog.show();
+    	}
+    	
+    	/**
+    	 * (non-Javadoc)
+    	 * @see android.os.AsyncTask#doInBackground(Params[])
+    	 */
 		@Override
 		protected Void doInBackground(String... arg0) {
 			AutoCompleteTextView depart = (AutoCompleteTextView) mView
@@ -304,9 +347,14 @@ public void showTimePickerDialog(View v) {
 
 		}
 
+		/**
+		 * (non-Javadoc)
+		 * @see android.os.AsyncTask#onPostExecute(java.lang.Object)
+		 */
 		@Override
 		protected void onPostExecute(Void result) {
 			calculateFare();
+			dialog.dismiss();
 		}
 
 	}

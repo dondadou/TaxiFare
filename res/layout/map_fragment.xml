@@ -16,6 +16,7 @@
              android:layout_alignParentTop="true"
              android:layout_marginLeft="5dp"
              android:layout_marginTop="5dp"
+             android:onClick="onClick"
              android:background="@drawable/yellow_button"
              android:text="@string/calcul_Box"
              android:textColor="@android:color/white" />

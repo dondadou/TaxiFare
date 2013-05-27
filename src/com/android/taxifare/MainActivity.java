@@ -37,6 +37,10 @@ public class MainActivity extends FragmentActivity implements
 	private Directions mDirection;
 	private boolean isTablet;
 
+	/**
+	 * (non-Javadoc)
+	 * @see android.support.v4.app.FragmentActivity#onCreate(android.os.Bundle)
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -56,12 +60,12 @@ public class MainActivity extends FragmentActivity implements
 			Location myLocation = mLocalisateur.obtenirPosition();
 
 			mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
-					myLocation.getLatitude(), myLocation.getLongitude()), 14.0f));
+					myLocation.getLatitude(), myLocation.getLongitude()), 12.0f));
 		}
 	}
 
 	@Override
-	/**
+	/*
 	 * (non-Javadoc)
 	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
 	 */
@@ -72,7 +76,9 @@ public class MainActivity extends FragmentActivity implements
 	}
 
 	/**
-	 * 
+	 * Cette fonction est appelée par les boutons se trouvant dams le mapFragment et le
+	 * fare_calculator_fragment.
+	 * @param v
 	 */
 	public void onClick(View v) {
 		switch (v.getId()) {
@@ -84,7 +90,7 @@ public class MainActivity extends FragmentActivity implements
 		}
 	}
 
-	/*
+	/**
 	 * Affiche le fragment contenant la boite de calcul des estimations.
 	 */
 	private void displayFareCalculatorFragment() {
@@ -95,8 +101,8 @@ public class MainActivity extends FragmentActivity implements
 		setDisplayBoxButtonVisible(false);
 	}
 
-	/*
-	 * 
+	/**
+	 * Fonction permettant d'appeler le Google Map.
 	 */
 	private void setUpMapIfNeeded() {
 		// Do a null check to confirm that we have not already instantiated the
@@ -122,7 +128,7 @@ public class MainActivity extends FragmentActivity implements
 	}
 
 	/**
-	 * 
+	 * Met en place le fragment fare_calculator.
 	 */
 	private void setFareCalculatorFragment() {
 		FragmentManager fm = getSupportFragmentManager();
@@ -167,7 +173,8 @@ public class MainActivity extends FragmentActivity implements
 	}
 
 	/**
-	 * 
+	 * Cette fonction dessine sur la carte le chemin retourné par le
+	 * fare_calculator_fragment.
 	 */
 	@Override
 	public void displayDirection(Directions direction) {
@@ -180,7 +187,7 @@ public class MainActivity extends FragmentActivity implements
 
 			String encoded = mDirection.getRoute().get(0).getPolyline()
 					.getPoints();
-			// TODO: Trouver une meilleure facon...
+			// TODO: Trouver une meilleure facon...si possible
 			LatLng origin =new LatLng(mDirection.getRoute().get(0).getLegs().get(0).getStartLocation().lat,
 					mDirection.getRoute().get(0).getLegs().get(0).getStartLocation().lng);
 			LatLng destination =new LatLng(mDirection.getRoute().get(0).getLegs().get(0).getEndLocation().lat,
@@ -225,7 +232,8 @@ public class MainActivity extends FragmentActivity implements
 	}
 
 	/**
-	 * 
+	 * Permet de cacher ou d'afficher le bouton permettant d'afficher
+	 * le fragment fare_calculator.
 	 * @param isVisible
 	 */
 	private void setDisplayBoxButtonVisible(boolean isVisible) {
