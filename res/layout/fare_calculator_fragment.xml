@@ -5,12 +5,13 @@
     android:id="@+id/mainLayout"
 	android:descendantFocusability="beforeDescendants"
 	android:focusableInTouchMode="true"
+	android:layout_margin="2dp"
     android:background="@android:color/white"
     tools:context=".MainActivity" >
 
     <AutoCompleteTextView
         android:id="@+id/arrivee"
-        android:layout_width="350dp"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/depart"
         android:layout_alignRight="@+id/depart"
@@ -26,20 +27,20 @@
 
     <AutoCompleteTextView
         android:id="@+id/depart"
-        android:layout_width="350dp"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="92dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
+        android:layout_marginTop="92dp"
+        android:layout_toLeftOf="@+id/myLocation_depart"
         android:ellipsize="none"
         android:ems="10"
-        android:imeOptions="actionNext"
         android:hint="@string/point_depart"
+        android:imeOptions="actionNext"
         android:scrollHorizontally="true"
-        android:singleLine="true" />
+        android:singleLine="true"
+        android:textColor="@android:color/black" />
 
     <Button
         android:id="@+id/heure_bouton"
@@ -70,18 +71,6 @@
         android:layout_marginTop="17dp"
         android:onClick="onClick"
         android:text="@string/date_par_defaut" />
-
-    <Button
-        android:id="@+id/button_eval"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/arrivee"
-        android:layout_below="@+id/heure_bouton"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/yellow_button"
-        android:onClick="onClick"
-        android:text="@string/evaluer"
-        android:textColor="@android:color/white" />
 
     <View
         android:id="@+id/separator1"
@@ -189,6 +178,40 @@
         android:layout_alignBaseline="@+id/button_eval"
         android:layout_alignBottom="@+id/button_eval"
         android:layout_toLeftOf="@+id/button_eval"
-        android:text="Afficher carte" />
+        android:text="@string/afficher_carte" />
+
+    <ImageButton
+        android:id="@+id/myLocation_depart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/depart"
+        android:layout_margin="5dp"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/yellow_button"
+        android:src="@drawable/ic_my_location" 
+        android:contentDescription="@string/point_depart"/>
+
+    <ImageButton
+        android:id="@+id/myLocation_arrivee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_alignBottom="@+id/arrivee"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/yellow_button"
+        android:src="@drawable/ic_my_location"
+        android:contentDescription="@string/point_arrivee" />
+
+    <Button
+        android:id="@+id/button_eval"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/myLocation_arrivee"
+        android:layout_below="@+id/heure_bouton"
+        android:layout_marginTop="21dp"
+        android:background="@drawable/yellow_button"
+        android:onClick="onClick"
+        android:text="@string/evaluer"
+        android:textColor="@android:color/white" />
 
 </RelativeLayout>
