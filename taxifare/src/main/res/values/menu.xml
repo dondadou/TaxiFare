@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="navigation_menu">
+        <item>@string/home</item>
+        <item>@string/saved_fares</item>
+        <item>@string/available_cities</item>
+    </array>
+
+    <array name="navigation_menu_icon">
+        <item>@drawable/ic_home</item>
+        <item>@drawable/ic_menu_favorites</item>
+        <item>@drawable/ic_country</item>
+    </array>
+
+</resources>

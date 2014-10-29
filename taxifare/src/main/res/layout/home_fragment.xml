@@ -1,0 +1,91 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+    >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/taximeter_background3"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="com.taxifare.ui.activity.MainActivity$PlaceholderFragment">
+
+        <LinearLayout
+            android:id="@+id/origin_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal">
+
+            <AutoCompleteTextView
+                android:id="@+id/origin_textview"
+                style="@style/autoCompleteTextBoxStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/origin"/>
+
+            <ImageButton
+                android:id="@+id/locate_me_origin"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center"
+                android:padding="0dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/locate_me"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/destinationLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/origin_layout"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal">
+
+            <AutoCompleteTextView
+                android:id="@+id/destination_textview"
+                style="@style/autoCompleteTextBoxStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/destination_text"
+                />
+
+            <ImageButton
+                android:id="@+id/locate_me_destination"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center"
+                android:padding="0dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/locate_me"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/calculateButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/destinationLayout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/orange_button"
+            android:text="@string/calculate_button_text"
+            android:textColor="@android:color/white"/>
+
+    </RelativeLayout>
+
+</FrameLayout>
+

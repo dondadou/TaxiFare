@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Taxi Fare</string>
+    <string name="title_activity_main">Taxi Fare</string>
+    <string name="home">Home</string>
+    <string name="my_position">My position</string>
+    <string name="saved_fares">Saved fares</string>
+    <string name="available_cities">Available cities</string>
+    <string name="origin">Start from...</string>
+    <string name="origin_marker">Origin</string>
+    <string name="destination_text">Going to...</string>
+    <string name="calculate_button_text">Calculate</string>
+    <string name="drawer_close">Closed drawer</string>
+    <string name="drawer_open">Opened drawer</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="searching">searching...</string>
+    <string name="no_location_found_error">Sorry, we were not able to retrieve your location. Please
+    make sure your GPS is activated.</string>
+    <string name="unknown_direction_api_error">Sorry, we are currently unable to process your request. Please try later.</string>
+    <string name="no_direction_found_error">Sorry, your search did not return any result.</string>
+    <string name="max_waypoints_exceeded">Sorry, the maximum number of steps has been exceeded (> 8).
+         Please try again with a shorter route.</string>
+    <string name="invalid_request_message">Sorry, the informations are incomplete. Please try again.</string>
+    <string name="no_internet_message">No internet connection. Please connect.</string>
+    <string name="city_fare_not_found_message">Sorry we do not have the taxi fare for this city.</string>
+</resources>
